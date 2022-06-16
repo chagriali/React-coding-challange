@@ -38,14 +38,10 @@ jobs:
       HEADLESS: true
     strategy:
       fail-fast: false
-      matrix:
-        group: [1, 2, 3, 4, 5, 6]
     steps:
       - uses: actions/cache@v1
         id: restore-build
-        with:
-          path: '.'
-          key: ${{ github.sha }}
+      - run: ls
       - run: cd photo-grid-frontend/
       - run: yarn run jest 
           
