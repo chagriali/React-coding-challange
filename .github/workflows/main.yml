@@ -27,5 +27,7 @@ jobs:
 
       # Build project
       - name: Build app
-        run: yarn build
+        run: |
+          cd photo-grid-frontend/
+          yarn build
 
