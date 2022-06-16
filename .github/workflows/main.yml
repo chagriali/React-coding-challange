@@ -31,5 +31,4 @@ jobs:
           cd photo-grid-frontend/
           yarn install
           yarn test
-          yarn build
 
