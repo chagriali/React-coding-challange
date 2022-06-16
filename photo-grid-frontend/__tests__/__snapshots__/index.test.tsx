@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import Home from "@/pages/index";
 
-describe("First test", () => {
-  it("Check render", () => {
-    render(<Home />);
+describe("index", () => {
+  it("Should render correctly", () => {
+    const home = render(<Home />);
+    expect(home).toMatchSnapshot();
   });
 });
