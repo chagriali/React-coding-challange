@@ -46,6 +46,7 @@ jobs:
         with:
           path: '.'
           key: ${{ github.sha }}
+      - run: cd photo-grid-frontend/
       - run: yarn run jest 
           
 
