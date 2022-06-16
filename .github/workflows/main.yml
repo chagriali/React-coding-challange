@@ -46,6 +46,6 @@ jobs:
         with:
           path: '.'
           key: ${{ github.sha }}
-      - run: jest
+      - run: yarn run jest 
           
 
