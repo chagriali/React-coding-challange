@@ -46,6 +46,6 @@ jobs:
         with:
           path: '.'
           key: ${{ github.sha }}
-      - run: node run-tests.js --timings -g ${{ matrix.group }}/6 -c 3
+      - run: jest
           
 
