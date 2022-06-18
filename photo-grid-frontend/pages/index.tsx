@@ -1,20 +1,71 @@
 import Navbar from "@/components/nav-bar/nav-bar";
 import Footer from "@/components/footer/footer";
-import React from "react";
-import ImgCard from "@/components/img-card/img-card";
+import React, { Suspense, useEffect, useState } from "react";
+import { IUrls } from "@/components/img-card/img-card";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
+
+const ImgCard = React.lazy(() => import("@/components/img-card/img-card"));
+
+interface IImage {
+  id: string;
+  created_at: Date;
+  updated_at: Date;
+  urls: IUrls;
+  width: number;
+  height: number;
+}
 
 const Home = () => {
+  const [page, setPage] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [imgList, setImgList] = useState<IImage[]>([]);
+  useEffect(() => {
+    (async () => {
+      await fetchData();
+    })();
+  }, []);
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    const result = await axios({
+      method: "GET",
+      url: "https://api.unsplash.com/photos",
+      params: {
+        client_id: process.env.CLIENT_ID,
+        page,
+      },
+    });
+    setImgList((prevImgList) => [
+      ...prevImgList,
+      ...result.data.filter(
+        (e: any) => imgList.findIndex((img) => img.id === e.id) == -1
+      ),
+    ]);
+    setPage(page + 1);
+    setIsLoading(false);
+  };
+
   return (
     <div className="flex flex-col h-screen justify-between">
       <Navbar />
-      <div className="grid grid-cols-4 gap-4">
-        <ImgCard />
-        <ImgCard />
-        <ImgCard />
-        <ImgCard />
-        <ImgCard />
-        <ImgCard />
-      </div>
+      <InfiniteScroll
+        dataLength={imgList.length}
+        next={fetchData}
+        hasMore={true}
+        loader={<h4>Loading...</h4>}
+      >
+        <div className="masonry sm:masonry-sm md:masonry-md">
+          {imgList.map((e) => (
+            <ImgCard
+              key={e.id}
+              urls={e.urls}
+              width={e.width / 10}
+              height={e.height / 10}
+            />
+          ))}
+        </div>
+      </InfiniteScroll>
       <Footer />
     </div>
   );
