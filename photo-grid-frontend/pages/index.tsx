@@ -4,6 +4,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { IUrls } from "@/components/img-card/img-card";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Masonry from "react-masonry-css";
 
 const ImgCard = React.lazy(() => import("@/components/img-card/img-card"));
 
@@ -55,7 +56,11 @@ const Home = () => {
         hasMore={true}
         loader={<h4>Loading...</h4>}
       >
-        <div className="masonry sm:masonry-sm md:masonry-md">
+        <Masonry
+          breakpointCols={3}
+          className="masonry-grid"
+          columnClassName="masonry-grid_column"
+        >
           {imgList.map((e) => (
             <ImgCard
               key={e.id}
@@ -64,7 +69,7 @@ const Home = () => {
               height={e.height / 10}
             />
           ))}
-        </div>
+        </Masonry>
       </InfiniteScroll>
       <Footer />
     </div>
