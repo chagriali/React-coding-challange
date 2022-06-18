@@ -1,12 +1,11 @@
 import Navbar from "@/components/nav-bar/nav-bar";
 import Footer from "@/components/footer/footer";
 import React, { Suspense, useEffect, useState } from "react";
-import { IUrls } from "@/components/img-card/img-card";
+import ImgCard, { IUrls } from "@/components/img-card/img-card";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Masonry from "react-masonry-css";
-
-const ImgCard = React.lazy(() => import("@/components/img-card/img-card"));
+import ImgLightBox from "@/components/img-lightbox/img-lightbox";
 
 interface IImage {
   id: string;
@@ -19,7 +18,6 @@ interface IImage {
 
 const Home = () => {
   const [page, setPage] = useState<number>(1);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [imgList, setImgList] = useState<IImage[]>([]);
   useEffect(() => {
     (async () => {
@@ -28,7 +26,6 @@ const Home = () => {
   }, []);
 
   const fetchData = async () => {
-    setIsLoading(true);
     const result = await axios({
       method: "GET",
       url: "https://api.unsplash.com/photos",
@@ -44,7 +41,6 @@ const Home = () => {
       ),
     ]);
     setPage(page + 1);
-    setIsLoading(false);
   };
 
   return (
@@ -54,7 +50,7 @@ const Home = () => {
         dataLength={imgList.length}
         next={fetchData}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={<h3>Loading ...</h3>}
       >
         <Masonry
           breakpointCols={{
