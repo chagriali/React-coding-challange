@@ -57,7 +57,12 @@ const Home = () => {
         loader={<h4>Loading...</h4>}
       >
         <Masonry
-          breakpointCols={3}
+          breakpointCols={{
+            default: 3,
+            1200: 3,
+            1000: 2,
+            700: 1,
+          }}
           className="masonry-grid"
           columnClassName="masonry-grid_column"
         >
