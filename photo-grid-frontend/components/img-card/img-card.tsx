@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
-import ImgLightBox from "../img-lightbox/img-lightbox";
+import ImgLightBox, { IUser } from "../img-lightbox/img-lightbox";
 
 export interface IUrls {
   small: string;
@@ -10,6 +10,7 @@ export interface IUrls {
 
 interface IImgCardProps {
   urls: IUrls;
+  user: IUser;
   width: number;
   height: number;
 }
@@ -34,6 +35,7 @@ const ImgCard = (props: IImgCardProps) => {
       {isImgLightBoxOpen && (
         <ImgLightBox
           imgUrl={props.urls.full}
+          user={props.user}
           width={props.width}
           height={props.height}
           handleClose={() => SetIsImgLightBoxOpen(false)}

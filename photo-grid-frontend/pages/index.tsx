@@ -1,17 +1,18 @@
 import Navbar from "@/components/nav-bar/nav-bar";
 import Footer from "@/components/footer/footer";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImgCard, { IUrls } from "@/components/img-card/img-card";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Masonry from "react-masonry-css";
-import ImgLightBox from "@/components/img-lightbox/img-lightbox";
+import { IUser } from "@/components/img-lightbox/img-lightbox";
 
 interface IImage {
   id: string;
   created_at: Date;
   updated_at: Date;
   urls: IUrls;
+  user: IUser;
   width: number;
   height: number;
 }
@@ -66,6 +67,7 @@ const Home = () => {
             <ImgCard
               key={e.id}
               urls={e.urls}
+              user={e.user}
               width={e.width / 10}
               height={e.height / 10}
             />

@@ -1,7 +1,19 @@
 import Image from "next/image";
 
+export interface IUrls {
+  small: string;
+  regular: string;
+  full: string;
+}
+
+export interface IUser {
+  username: string;
+  bio: string;
+}
+
 interface IImgLightBox {
   imgUrl: string;
+  user: IUser;
   width: number;
   height: number;
   handleClose: () => void;
@@ -21,7 +33,6 @@ const ImgLightBox = (props: IImgLightBox) => {
         <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
           <div className="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-              <div className="sm:flex sm:items-start"></div>
               <div>
                 <Image
                   src={props.imgUrl}
@@ -34,17 +45,28 @@ const ImgLightBox = (props: IImgLightBox) => {
                   placeholder="blur"
                 />
               </div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button
-                  onClick={() => {
-                    console.log("closing");
-                    props.handleClose();
-                  }}
-                  type="button"
-                  className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                >
-                  Close
-                </button>
+              <div>
+                <p>
+                  <span className="font-bold">Username:</span>{" "}
+                  {props.user.username}
+                </p>
+              </div>
+              <div>
+                <p>{props.user.bio}</p>
+              </div>
+              <div className="grid place-items-center h">
+                <div>
+                  <button
+                    onClick={() => {
+                      console.log("closing");
+                      props.handleClose();
+                    }}
+                    type="button"
+                    className="ml-auto bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>
