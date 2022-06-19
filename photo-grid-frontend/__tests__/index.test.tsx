@@ -2,7 +2,6 @@ import { render } from "@testing-library/react";
 import Home from "@/pages/index";
 import axios from "axios";
 import { act } from "react-dom/test-utils";
-import RenderResult from "next/dist/server/render-result";
 
 // Mock jest and set the type
 jest.mock("axios");
@@ -15,13 +14,13 @@ describe("index", () => {
       data: [
         {
           id: "testiId1",
-          urls: { small: "/public/placeholder.png" },
+          urls: { small: "/placeholder.png" },
           width: 500,
           height: 500,
         },
         {
           id: "testiId2",
-          urls: { small: "/public/placeholder.png" },
+          urls: { small: "/placeholder.png" },
           width: 500,
           height: 500,
         },
