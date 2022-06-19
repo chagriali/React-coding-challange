@@ -23,7 +23,7 @@ const ImgLightBox = (props: IImgLightBox) => {
   return (
     <div
       className="relative z-10"
-      aria-labelledby="modal-title"
+      aria-labelledby="modal"
       role="dialog"
       aria-modal="true"
     >
