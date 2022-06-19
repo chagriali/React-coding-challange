@@ -1,6 +1,23 @@
-## Result
+## Getting started
 
-Url: https://react-coding-challange-r8xfmlq5h-chagriali.vercel.app/
+- Clone repo
+- Move to the photo-grid-frontend folder
+- Run `yarn install` to install dependencies
+- Get Access ID from Unsplash API
+- Create a local .env.local file
+- Copy this line
+
+```console
+CLIENT_ID="<YOUR UNSPLASH ACCESS ID>
+```
+
+- Run `yarn dev` to start
+
+## Vercel Deployment
+
+Url: https://react-coding-challange-amber.vercel.app/
+
+## Chalenge Instructions
 
 This is a coding challenge for prospective front-end and full-stack developer applicants applying to TechGuilds.
 
