@@ -15,6 +15,7 @@ interface IImage {
   user: IUser;
   width: number;
   height: number;
+  likes: number;
 }
 
 const Home = () => {
@@ -70,6 +71,7 @@ const Home = () => {
               user={e.user}
               width={e.width / 10}
               height={e.height / 10}
+              likes={e.likes}
             />
           ))}
         </Masonry>
