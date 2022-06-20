@@ -13,6 +13,8 @@ CLIENT_ID="<YOUR UNSPLASH ACCESS ID>
 
 - Run `yarn dev` to start
 
+Nb: I've disabled the lightbox rendering for mobile to keep the app user friendly (it was replaced with an info component)
+
 ## Vercel Deployment
 
 Url: https://react-coding-challange-amber.vercel.app/
@@ -37,7 +39,7 @@ If you're unfamiliar with React, Facebook has put together a helpful tutorial th
 - [x] The grid should support infinite scrolling, using a lazy-load strategy to fetch additional images as the user scrolls.
 - [x] You're free to use existing open source React components or Javascript packages/libraries from npm to complete this task.
 - [x] You're free to use any UI framework such as Tailwind, Material UI etc.
-- [] Write necessary test cases.
+- [x] Write necessary test cases.
 - [x] Deploy your app to Vercel or any other hosting provider.
       Refer to docs how to deploy Next.js app to vercel: https://vercel.com
 
